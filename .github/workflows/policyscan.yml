@@ -22,12 +22,6 @@ jobs:
         with: 
           distribution: 'adopt'
           java-version: '8'
-          
-      # zip the project and move it to a staging directory
-      - name: Zip Project
-        run: zip -R project.zip '*.py' '*.html' '*.htm' '*.js' '*.php' 'requirements.txt' '*.json' '*.lock' '*.ts' '*.pl' '*.pm' '*.plx' '*.pl5' '*.cgi' '*.go' '*.sum' '*.mod'
-        env:
-          build-name: project.zip
       - uses: actions/upload-artifact@v3 # Copy files from repository to docker container so the next uploadandscan action can access them.
         with:
           path: project.zip # Wildcards can be used to filter the files copied into the container. See: https://github.com/actions/upload-artifact
@@ -36,6 +30,6 @@ jobs:
           appname: '${{ github.repository }}'
           version: '${{ github.run_id }}'
           filepath: 'project.zip'
-          vid: '${{ secrets.VERACODE_API_ID }}'
-          vkey: '${{ secrets.VERACODE_API_KEY }}'
+          vid: 'e2e712b56159ac0fd42cd1ef09e4d21a'
+          vkey: '6e02cad14fc16601be0e8e80d42363e80511f7e2866b5ebdbb268d81482b3e673fadb7af37a8f26f3c4f01d96e9f4e565e5b59441e9a92f228e4be62810e9a0a'
           scantimeout: 15
