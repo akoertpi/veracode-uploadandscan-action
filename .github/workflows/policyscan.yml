@@ -26,7 +26,7 @@ jobs:
         with:
           path: project.zip # Wildcards can be used to filter the files copied into the container. See: https://github.com/actions/upload-artifact
       - uses: veracode/veracode-uploadandscan-action@master # Run the uploadandscan action. Inputs are described above.
-        with:
+        with: 
           appname: '${{ github.repository }}'
           version: '${{ github.run_id }}'
           filepath: 'project.zip'
